@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import DroneAnimation from './DroneAnimation';
 import { Overlay } from './Overlay'; // Corrected import
 
 const HomePage: React.FC = () => {
@@ -34,7 +33,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <DroneAnimation scroll={scroll} />
+      {/* 3D Model removed intentionally for now */}
       <Overlay ref={overlayRef} />
     </>
   );

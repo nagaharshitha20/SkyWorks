@@ -71,7 +71,6 @@ const LocationMarker: React.FC<{ position: THREE.Vector3, text: string }> = ({ p
                 anchorY="top"
                 fontSize={0.08}
                 lineHeight={1.5}
-                whiteSpace="pre" // Ensure newlines are respected
             >
                 {text}
             </Text>

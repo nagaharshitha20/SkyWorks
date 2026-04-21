@@ -9,9 +9,9 @@ import { products } from './data/products';
 import { CartProvider } from './context/CartContext';
 
 // New Pages
-// import { About } from './pages/About';
+import About from './pages/About';
 import Technology from './pages/Technology';
-// import { Contact } from './pages/Contact';
+import Contact from './pages/Contact';
 // import { Checkout } from './pages/Checkout';
 // import { Careers } from './pages/Careers';
 // import { Press } from './pages/Press';
@@ -51,14 +51,14 @@ function App() {
         return <Shop />;
       case '#cart':
         return <Cart />;
-      // case '#about':
-      //   return <About />;
+      case '#about':
+        return <About />;
       case '#technology':
         return <Technology />;
       // case '#careers':
       //   return <Careers />;
-      // case '#contact':
-      //   return <Contact />;
+      case '#contact':
+        return <Contact />;
       // case '#checkout':
       //   return <Checkout />;
       // case '#press':

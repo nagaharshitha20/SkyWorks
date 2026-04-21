@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
     e.preventDefault();
     const targetHash = e.currentTarget.getAttribute('href');
     if (targetHash) {
-        window.location.hash = targetHash;
+      window.location.hash = targetHash;
     }
   };
 
@@ -30,9 +30,9 @@ export const Footer: React.FC = () => {
           <div className="mt-4 md:mt-0">
             <h4 className="font-semibold text-sky-light tracking-wider uppercase">Products</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><FooterLink href="#shop/skyvision-pro">Skyvision Pro</FooterLink></li>
-              <li><FooterLink href="#shop/skyvision-mini">Skyvision Mini</FooterLink></li>
-              <li><FooterLink href="#shop/skyvision-campus">Skyvision Campus</FooterLink></li>
+              <li><FooterLink href="#shop/x1">SkyVision X1</FooterLink></li>
+              <li><FooterLink href="#shop/s1">SkyVision S1</FooterLink></li>
+              <li><FooterLink href="#shop/a1">SkyVision A1</FooterLink></li>
               <li><FooterLink href="#shop">All Drones</FooterLink></li>
             </ul>
           </div>
@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
               <li><FooterLink href="#downloads">Downloads</FooterLink></li>
             </ul>
           </div>
-           <div>
+          <div>
             <h4 className="font-semibold text-sky-light tracking-wider uppercase">Legal</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><FooterLink href="#privacy">Privacy Policy</FooterLink></li>

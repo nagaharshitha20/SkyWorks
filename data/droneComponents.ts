@@ -23,7 +23,7 @@ export const droneComponents = [
   {
     id: 'main-body',
     name: 'Carbon Fiber Main Body',
-    description: 'The drone's chassis is constructed from a lightweight yet incredibly strong carbon fiber composite. This provides a rigid platform for all components, protecting them from the elements and ensuring stable flight characteristics.',
+    description: 'The drone\'s chassis is constructed from a lightweight yet incredibly strong carbon fiber composite. This provides a rigid platform for all components, protecting them from the elements and ensuring stable flight characteristics.',
   },
   {
     id: 'gimbal',

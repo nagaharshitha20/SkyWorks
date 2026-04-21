@@ -1,6 +1,4 @@
-
 import React from 'react';
-import TechnologyDroneAnimation from '../components/TechnologyDroneAnimation';
 
 const TechnologyPage = () => {
   const features = [
@@ -29,15 +27,15 @@ const TechnologyPage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start" style={{ height: '300vh' }}>
-        <div className="sticky top-0 h-screen">
-          <TechnologyDroneAnimation />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div className="sticky top-24 h-[calc(100vh-6rem)] hidden md:block rounded-xl overflow-hidden shadow-2xl">
+           <img src="https://images.unsplash.com/photo-1521405924368-64c5b84bec60?q=80&w=1770&auto=format&fit=crop" alt="SkyVision Pro Technology" className="w-full h-full object-cover" />
         </div>
-        <div className="flex flex-col justify-center h-full space-y-96 py-32">
+        <div className="flex flex-col justify-center space-y-12 py-12 md:py-32">
           {features.map((feature, index) => (
-            <div key={index} className="bg-gray-900 p-6 rounded-lg shadow-lg">
+            <div key={index} className="bg-gray-900 border border-gray-800 p-8 rounded-2xl shadow-lg hover:border-blue-500 transition-colors duration-300">
               <h3 className="text-2xl font-bold text-blue-400">{feature.name}</h3>
-              <p className="mt-2 text-gray-300">{feature.description}</p>
+              <p className="mt-4 text-gray-300 leading-relaxed text-lg">{feature.description}</p>
             </div>
           ))}
         </div>
