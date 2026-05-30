@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Overlay } from './Overlay'; // Corrected import
 
-const HomePage: React.FC<{ introFinished?: boolean }> = ({ introFinished = true }) => {
+const HomePage: React.FC = () => {
   const [scroll, setScroll] = useState(0);
   const overlayRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +34,7 @@ const HomePage: React.FC<{ introFinished?: boolean }> = ({ introFinished = true 
   return (
     <>
       {/* 3D Model removed intentionally for now */}
-      <Overlay ref={overlayRef} introFinished={introFinished} />
+      <Overlay ref={overlayRef} />
     </>
   );
 };
