@@ -13,7 +13,7 @@ import { pageVariants } from './components/ui/motion';
 
 // New Pages
 import About from './pages/About';
-import Technology from './pages/Technology';
+import Blogs from './pages/Blogs';
 import Contact from './pages/Contact';
 
 // Wrapper that applies cinematic page transition
@@ -77,6 +77,7 @@ function App() {
     switch (route) {
       case '#missions':
       case '#shop':
+      case '#services':
         return <PageWrapper routeKey="#missions"><Shop /></PageWrapper>;
 
       case '#cart':
@@ -86,29 +87,11 @@ function App() {
       case '#innovation':
         return <PageWrapper routeKey="#about"><About /></PageWrapper>;
 
-      case '#technology':
-        return <PageWrapper routeKey="#technology"><Technology /></PageWrapper>;
+      case '#blogs':
+        return <PageWrapper routeKey="#blogs"><Blogs /></PageWrapper>;
 
       case '#contact':
         return <PageWrapper routeKey="#contact"><Contact /></PageWrapper>;
-
-      // Media / portfolio — scroll the homepage portfolio section
-      case '#media':
-        window.location.hash = '#/';
-        return <PageWrapper routeKey="#/"><Home introFinished={introFinished} /></PageWrapper>;
-
-      // Careers placeholder
-      case '#careers':
-        return (
-          <PageWrapper routeKey="#careers">
-            <div className="min-h-screen bg-[#03070c] text-white flex items-center justify-center flex-col gap-6">
-              <h1 className="text-5xl font-black tracking-tighter">
-                Careers <span className="text-[#00ffcc]">Coming Soon</span>
-              </h1>
-              <p className="text-gray-400 text-lg">We're building our team. Check back soon.</p>
-            </div>
-          </PageWrapper>
-        );
 
       case '#/':
       case '':

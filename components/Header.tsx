@@ -3,13 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CartContext } from '../context/CartContext';
 
 const NAV_LINKS = [
-  { label: 'Home',       href: '#/'         },
-  { label: 'Missions',   href: '#missions'  },
-  { label: 'Technology', href: '#technology'},
-  { label: 'Innovation', href: '#innovation'},
-  { label: 'Media',      href: '#media'     },
-  { label: 'Careers',    href: '#careers'   },
-  { label: 'Contact',    href: '#contact'   },
+  { label: 'Home',     href: '#/'       },
+  { label: 'About',    href: '#about'   },
+  { label: 'Services', href: '#missions'},
+  { label: 'Blogs',    href: '#blogs'   },
+  { label: 'Contact',  href: '#contact' },
 ];
 
 export const Header: React.FC = () => {
