@@ -21,22 +21,13 @@ const smoothT = (duration: number, delay = 0): Transition => ({
 export const pageVariants: Variants = {
   initial: {
     opacity: 0,
-    scale: 0.97,
-    y: 12,
-    filter: 'blur(8px)',
   },
   animate: {
     opacity: 1,
-    scale: 1,
-    y: 0,
-    filter: 'blur(0px)',
     transition: smoothT(0.7),
   },
   exit: {
     opacity: 0,
-    scale: 0.95,
-    y: -12,
-    filter: 'blur(6px)',
     transition: { duration: 0.5, ease: snappy },
   },
 };

@@ -11,18 +11,24 @@
         theme: {
           extend: {
             colors: {
-              'sky-dark': '#050505',
-              'sky-surface': '#111111',
-              'sky-light': '#f5f5f5',
-              'sky-blue': '#00BFFF',
-              'sky-gray': '#a0a0a0',
+              yellow: 'var(--yellow)',
+              'yellow-hover': 'var(--yellow-hover)',
+              'yellow-light': 'var(--yellow-light)',
+              black: 'var(--black)',
+              'black-soft': 'var(--black-soft)',
+              'gray-dark': 'var(--gray-dark)',
+              'gray-mid': 'var(--gray-mid)',
+              'gray-light': 'var(--gray-light)',
+              'gray-border': 'var(--gray-border)',
+              white: 'var(--white)',
             },
             fontFamily: {
-              sans: ['Poppins', 'sans-serif'],
+              sans: ['Arial', 'Helvetica', 'sans-serif'],
+              condensed: ['Arial', 'Helvetica', 'sans-serif'],
             },
             backgroundImage: {
-              'grid-pattern': `linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                               linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
+              'grid-pattern': `linear-gradient(to right, rgba(13, 13, 13, 0.05) 1px, transparent 1px),
+                               linear-gradient(to bottom, rgba(13, 13, 13, 0.05) 1px, transparent 1px)`,
             },
             backgroundSize: {
                 'grid-pattern': '2rem 2rem',
@@ -50,8 +56,8 @@
                 '100%': { transform: 'translateY(0px)' },
               },
                glow: {
-                'from': { 'box-shadow': '0 0 5px #00BFFF, 0 0 10px #00BFFF' },
-                'to': { 'box-shadow': '0 0 20px #00BFFF, 0 0 30px #00BFFF' }
+                'from': { 'box-shadow': '0 0 5px var(--yellow), 0 0 10px var(--yellow)' },
+                'to': { 'box-shadow': '0 0 20px var(--yellow), 0 0 30px var(--yellow)' }
               },
               'ken-burns': {
                 '0%': { transform: 'scale(1) translate(0, 0)' },
@@ -62,9 +68,6 @@
         },
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <style>
@@ -74,7 +77,7 @@
 </style>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-sky-dark text-sky-light font-sans">
+  <body class="bg-white text-gray-mid font-sans">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

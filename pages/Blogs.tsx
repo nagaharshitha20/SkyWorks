@@ -13,8 +13,8 @@ const INSIGHTS = [
     readTime: '6 min read',
     title: 'AI-Powered Flight Path Optimization',
     excerpt: 'How our proprietary neural mesh calculates real-time obstacle avoidance across 3D terrain maps at 120fps, reducing mission time by 40%.',
-    gradient: 'from-[#00ffcc]/15 to-transparent',
-    accent: '#00ffcc',
+    gradient: 'from-[#FFD600]/15 to-transparent',
+    accent: '#FFD600',
     icon: '🧠',
   },
   {
@@ -25,7 +25,7 @@ const INSIGHTS = [
     title: 'Drone Inspection for Solar Farms',
     excerpt: 'Thermal imaging drones identified 2,400 failing solar cells across a 500-acre facility — a job that would have taken 3 weeks done in 6 hours.',
     gradient: 'from-white/5 to-transparent',
-    accent: '#00ffcc',
+    accent: '#FFD600',
     icon: '⚡',
   },
   {
@@ -35,8 +35,8 @@ const INSIGHTS = [
     readTime: '5 min read',
     title: 'How Aerial Mapping Saves Time on Construction Sites',
     excerpt: 'Centimeter-accurate topographic surveys in under 2 hours. Our LiDAR payload stack delivers survey-grade results without boots on the ground.',
-    gradient: 'from-[#00ffcc]/10 to-blue-900/10',
-    accent: '#00ffcc',
+    gradient: 'from-[#FFD600]/10 to-blue-900/10',
+    accent: '#FFD600',
     icon: '🗺️',
   },
   {
@@ -47,7 +47,7 @@ const INSIGHTS = [
     title: 'Behind the Scenes of SkyWorks Operations',
     excerpt: 'A deep look into our mission control room, pre-flight checklists, safety protocols, and the 200+ data points collected per second during every flight.',
     gradient: 'from-white/5 to-transparent',
-    accent: '#00ffcc',
+    accent: '#FFD600',
     icon: '🎬',
   },
   {
@@ -57,8 +57,8 @@ const INSIGHTS = [
     readTime: '7 min read',
     title: 'The Future of Autonomous Drone Swarms',
     excerpt: 'SkyWorks R&D is testing decentralised swarm intelligence — 50 drones, zero human pilots, one unified mission objective. Here\'s what we learned.',
-    gradient: 'from-[#00ffcc]/10 to-transparent',
-    accent: '#00ffcc',
+    gradient: 'from-[#FFD600]/10 to-transparent',
+    accent: '#FFD600',
     icon: '🤖',
   },
   {
@@ -69,7 +69,7 @@ const INSIGHTS = [
     title: 'Precision Agriculture from Above',
     excerpt: 'NDVI multispectral imaging reveals hidden crop stress weeks before visible symptoms appear. Partnering with 12 farms across 3 states.',
     gradient: 'from-white/5 to-transparent',
-    accent: '#00ffcc',
+    accent: '#FFD600',
     icon: '🌾',
   },
 ];
@@ -221,7 +221,7 @@ function FloatingParticles({ count = 30 }: { count?: number }) {
       {particles.map(p => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-cyan-400/20"
+          className="absolute rounded-full bg-yellow/20"
           style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.size, height: p.size }}
           animate={{ y: [-20, 20, -20], opacity: [0.1, 0.5, 0.1] }}
           transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
@@ -239,8 +239,8 @@ function GridBackground() {
         className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0,255,204,1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,255,204,1) 1px, transparent 1px)
+            linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px)
           `,
           backgroundSize: '60px 60px',
         }}
@@ -255,13 +255,13 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
 
   return (
     <div ref={ref} className="text-center group">
-      <div className="text-6xl md:text-7xl font-black tracking-tighter text-white mb-2">
+      <div className="text-6xl md:text-7xl font-black tracking-tighter text-gray-900 mb-2">
         <span className="tabular-nums">{count.toLocaleString()}</span>
-        <span className="text-[#00ffcc]">{suffix}</span>
+        <span className="text-[#FFD600]">{suffix}</span>
       </div>
-      <div className="text-gray-400 text-sm font-medium tracking-widest uppercase">{label}</div>
+      <div className="text-gray-600 text-sm font-medium tracking-widest uppercase">{label}</div>
       <motion.div
-        className="mx-auto mt-3 h-px bg-gradient-to-r from-transparent via-[#00ffcc] to-transparent"
+        className="mx-auto mt-3 h-px bg-gradient-to-r from-transparent via-[#FFD600] to-transparent"
         initial={{ width: 0 }}
         whileInView={{ width: '80%' }}
         transition={{ duration: 1.2, delay: 0.3 }}
@@ -297,10 +297,10 @@ function InsightCard({ card, index }: { card: typeof INSIGHTS[0]; index: number 
         className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
       />
 
-      <div className="relative bg-white/[0.03] border border-white/10 rounded-2xl p-6 backdrop-blur-sm overflow-hidden">
+      <div className="card-light overflow-hidden flex flex-col h-full">
         {/* Scan line on hover */}
         <motion.div
-          className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent pointer-events-none"
+          className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-yellow/40 to-transparent pointer-events-none"
           style={{ top: '50%' }}
           initial={{ scaleX: 0 }}
           whileHover={{ scaleX: 1 }}
@@ -317,15 +317,15 @@ function InsightCard({ card, index }: { card: typeof INSIGHTS[0]; index: number 
           <span className="text-3xl">{card.icon}</span>
         </div>
 
-        <h3 className="text-lg font-bold text-white mb-3 leading-snug group-hover:text-[#00ffcc] transition-colors duration-300">
+        <h3 className="text-lg font-bold text-gray-900 mb-3 leading-snug group-hover:text-[#FFD600] transition-colors duration-300">
           {card.title}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-5">{card.excerpt}</p>
+        <p className="text-gray-600 text-sm leading-relaxed mb-5">{card.excerpt}</p>
 
         <div className="flex items-center justify-between text-xs text-gray-500">
           <span>{card.date}</span>
           <div className="flex items-center gap-1">
-            <div className="w-1 h-1 rounded-full bg-[#00ffcc]" />
+            <div className="w-1 h-1 rounded-full bg-[#FFD600]" />
             <span>{card.readTime}</span>
           </div>
         </div>
@@ -358,21 +358,21 @@ function TimelineItem({ item, index }: { item: typeof TIMELINE[0]; index: number
       className={`flex items-center gap-8 ${isLeft ? 'flex-row' : 'flex-row-reverse'} mb-16`}
     >
       <div className={`flex-1 ${isLeft ? 'text-right' : 'text-left'}`}>
-        <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 backdrop-blur-sm inline-block max-w-sm w-full">
-          <div className="text-[#00ffcc] text-sm font-bold tracking-widest mb-2">{item.year}</div>
-          <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
-          <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+        <div className="card-light inline-block max-w-sm w-full">
+          <div className="text-[#FFD600] text-sm font-bold tracking-widest mb-2">{item.year}</div>
+          <h3 className="text-gray-900 font-bold text-xl mb-2">{item.title}</h3>
+          <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
         </div>
       </div>
 
       {/* Node */}
       <div className="relative flex-shrink-0 w-12 h-12 flex items-center justify-center">
         <motion.div
-          className="absolute inset-0 rounded-full border-2 border-[#00ffcc]/40"
+          className="absolute inset-0 rounded-full border-2 border-[#FFD600]/40"
           animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0, 0.4] }}
           transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.5 }}
         />
-        <div className="w-4 h-4 rounded-full bg-[#00ffcc] shadow-[0_0_16px_rgba(0,255,204,0.6)]" />
+        <div className="w-4 h-4 rounded-full bg-[#FFD600] shadow-[0_0_16px_rgba(255,214,0,0.6)]" />
       </div>
 
       <div className="flex-1" />
@@ -405,14 +405,14 @@ function ForestSchematic({ hovered }: { hovered: boolean }) {
       />
       {/* Coverage radius */}
       <motion.circle cx="120" cy="62" r="86"
-        stroke="rgba(0,255,204,0.08)" strokeWidth="0.6" fill="none" strokeDasharray="4 3"
+        stroke="rgba(255,214,0,0.08)" strokeWidth="0.6" fill="none" strokeDasharray="4 3"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={hovered ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
         transition={{ pathLength: { duration: 1.0, delay: 0.5 }, opacity: { duration: 0.1, delay: 0.5 } }}
       />
       {/* Hub */}
       <motion.circle cx="120" cy="62" r="5.5"
-        stroke="rgba(0,255,204,0.6)" strokeWidth="1" fill="rgba(0,255,204,0.08)"
+        stroke="rgba(255,214,0,0.6)" strokeWidth="1" fill="rgba(255,214,0,0.08)"
         initial={{ scale: 0, opacity: 0 }} animate={hovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
         transition={{ duration: 0.35, delay: 0.85 }} style={{ transformOrigin: '120px 62px' }}
       />
@@ -425,9 +425,9 @@ function ForestSchematic({ hovered }: { hovered: boolean }) {
         />
       ))}
       {/* Annotations */}
-      <motion.g initial={{ opacity: 0 }} animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+      <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 1.1 }}>
-        <text x="125" y="59" fontSize="5" fill="rgba(0,255,204,0.7)" fontFamily="monospace">HUB-01</text>
+        <text x="125" y="59" fontSize="5" fill="rgba(255,214,0,0.7)" fontFamily="monospace">HUB-01</text>
         <text x="43" y="24" fontSize="4.5" fill="rgba(255,255,255,0.35)" fontFamily="monospace">SN-A</text>
         <text x="203" y="24" fontSize="4.5" fill="rgba(255,255,255,0.35)" fontFamily="monospace">SN-B</text>
         <text x="21" y="79" fontSize="4.5" fill="rgba(255,255,255,0.35)" fontFamily="monospace">SN-C</text>
@@ -441,7 +441,7 @@ function ForestSchematic({ hovered }: { hovered: boolean }) {
         transition={{ pathLength: { duration: 0.5, delay: 1.3 }, opacity: { duration: 0.1, delay: 1.3 } }}
       />
       <motion.text x="88" y="121" fontSize="4.5" fill="rgba(255,255,255,0.22)" fontFamily="monospace"
-        initial={{ opacity: 0 }} animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 1.6 }}>12,000 ACRES COVERAGE</motion.text>
     </>
   );
@@ -467,25 +467,25 @@ function CitySchematic({ hovered }: { hovered: boolean }) {
       {blocks.map(([x,y,w,h], i) => (
         <motion.rect key={i} x={x} y={y} width={w} height={h}
           stroke="rgba(255,255,255,0.22)" strokeWidth="0.5" fill="rgba(255,255,255,0.03)"
-          initial={{ opacity: 0 }} animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ duration: 0.2, delay: 0.6 + i * 0.04 }}
         />
       ))}
       {/* Drone survey path */}
       <motion.path d="M 22 104 Q 110 10 198 104"
-        stroke="rgba(0,255,204,0.4)" strokeWidth="0.8" fill="none" strokeDasharray="4 3"
+        stroke="rgba(255,214,0,0.4)" strokeWidth="0.8" fill="none" strokeDasharray="4 3"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={hovered ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
         transition={{ pathLength: { duration: 0.9, delay: 0.9, ease: 'easeInOut' }, opacity: { duration: 0.1, delay: 0.9 } }}
       />
       {/* UAV marker */}
-      <motion.g initial={{ opacity: 0, scale: 0 }} animate={hovered ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+      <motion.g initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3, delay: 1.6 }} style={{ transformOrigin: '110px 30px' }}>
-        <circle cx="110" cy="30" r="4" stroke="rgba(0,255,204,0.6)" strokeWidth="0.8" fill="rgba(0,255,204,0.1)" />
-        <text x="115" y="28" fontSize="5" fill="rgba(0,255,204,0.7)" fontFamily="monospace">UAV</text>
+        <circle cx="110" cy="30" r="4" stroke="rgba(255,214,0,0.6)" strokeWidth="0.8" fill="rgba(255,214,0,0.1)" />
+        <text x="115" y="28" fontSize="5" fill="rgba(255,214,0,0.7)" fontFamily="monospace">UAV</text>
       </motion.g>
       {/* Annotations */}
-      <motion.g initial={{ opacity: 0 }} animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+      <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 1.3 }}>
         <text x="18" y="14" fontSize="4.5" fill="rgba(255,255,255,0.28)" fontFamily="monospace">SECTOR-A</text>
         <text x="140" y="14" fontSize="4.5" fill="rgba(255,255,255,0.28)" fontFamily="monospace">SECTOR-B</text>
@@ -517,7 +517,7 @@ function FleetSchematic({ hovered }: { hovered: boolean }) {
       ))}
       {/* Dispatch vectors from HQ */}
       <motion.path d="M 120 108 L 72 48 M 120 108 L 168 48 M 120 108 L 120 88"
-        stroke="rgba(0,255,204,0.2)" strokeWidth="0.5" fill="none"
+        stroke="rgba(255,214,0,0.2)" strokeWidth="0.5" fill="none"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={hovered ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
         transition={{ pathLength: { duration: 0.7, delay: 1.0 }, opacity: { duration: 0.1, delay: 1.0 } }}
@@ -525,26 +525,26 @@ function FleetSchematic({ hovered }: { hovered: boolean }) {
       {/* Drone X symbols */}
       {drones.map(([cx,cy,label], i) => (
         <motion.g key={`d${i}`}
-          initial={{ opacity: 0, scale: 0 }} animate={hovered ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+          initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.65 + i * 0.1 }} style={{ transformOrigin: `${cx}px ${cy}px` }}>
-          <line x1={cx-7} y1={cy-7} x2={cx+7} y2={cy+7} stroke="rgba(0,255,204,0.65)" strokeWidth="1.3" strokeLinecap="round" />
-          <line x1={cx+7} y1={cy-7} x2={cx-7} y2={cy+7} stroke="rgba(0,255,204,0.65)" strokeWidth="1.3" strokeLinecap="round" />
-          <circle cx={cx} cy={cy} r="4.5" stroke="rgba(0,255,204,0.35)" strokeWidth="0.6" fill="rgba(0,255,204,0.06)" />
+          <line x1={cx-7} y1={cy-7} x2={cx+7} y2={cy+7} stroke="rgba(255,214,0,0.65)" strokeWidth="1.3" strokeLinecap="round" />
+          <line x1={cx+7} y1={cy-7} x2={cx-7} y2={cy+7} stroke="rgba(255,214,0,0.65)" strokeWidth="1.3" strokeLinecap="round" />
+          <circle cx={cx} cy={cy} r="4.5" stroke="rgba(255,214,0,0.35)" strokeWidth="0.6" fill="rgba(255,214,0,0.06)" />
         </motion.g>
       ))}
       {/* HQ dispatch point */}
       <motion.circle cx="120" cy="108" r="5"
-        stroke="rgba(0,255,204,0.5)" strokeWidth="0.8" fill="rgba(0,255,204,0.07)"
+        stroke="rgba(255,214,0,0.5)" strokeWidth="0.8" fill="rgba(255,214,0,0.07)"
         initial={{ scale: 0, opacity: 0 }} animate={hovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
         transition={{ duration: 0.35, delay: 0.5 }} style={{ transformOrigin: '120px 108px' }}
       />
       {/* Annotations */}
-      <motion.g initial={{ opacity: 0 }} animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+      <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 1.2 }}>
-        <text x="64" y="42" fontSize="4.5" fill="rgba(0,255,204,0.55)" fontFamily="monospace">UAV-01</text>
-        <text x="170" y="42" fontSize="4.5" fill="rgba(0,255,204,0.55)" fontFamily="monospace">UAV-02</text>
-        <text x="123" y="85" fontSize="4.5" fill="rgba(0,255,204,0.55)" fontFamily="monospace">UAV-03</text>
-        <text x="125" y="110" fontSize="4.5" fill="rgba(0,255,204,0.5)" fontFamily="monospace">HQ</text>
+        <text x="64" y="42" fontSize="4.5" fill="rgba(255,214,0,0.55)" fontFamily="monospace">UAV-01</text>
+        <text x="170" y="42" fontSize="4.5" fill="rgba(255,214,0,0.55)" fontFamily="monospace">UAV-02</text>
+        <text x="123" y="85" fontSize="4.5" fill="rgba(255,214,0,0.55)" fontFamily="monospace">UAV-03</text>
+        <text x="125" y="110" fontSize="4.5" fill="rgba(255,214,0,0.5)" fontFamily="monospace">HQ</text>
         <text x="58" y="122" fontSize="4.5" fill="rgba(255,255,255,0.22)" fontFamily="monospace">T+90s DISPATCH READY</text>
       </motion.g>
     </>
@@ -557,9 +557,9 @@ function BlueprintCard({ mission, index }: { mission: typeof BLUEPRINT_MISSIONS[
 
   const renderSchematic = () => {
     switch (mission.schematicId) {
-      case 0: return <ForestSchematic hovered={hovered} />;
-      case 1: return <CitySchematic hovered={hovered} />;
-      case 2: return <FleetSchematic hovered={hovered} />;
+      case 0: return <ForestSchematic hovered={true} />;
+      case 1: return <CitySchematic hovered={true} />;
+      case 2: return <FleetSchematic hovered={true} />;
       default: return null;
     }
   };
@@ -574,7 +574,7 @@ function BlueprintCard({ mission, index }: { mission: typeof BLUEPRINT_MISSIONS[
       onHoverEnd={() => setHovered(false)}
       className="relative cursor-pointer group"
     >
-      <div className="relative bg-[#020c18] border border-white/[0.09] rounded-2xl overflow-hidden transition-colors duration-500 group-hover:border-white/[0.18]">
+      <div className="relative bg-[#1A1A1A] border border-[#2A2A2A] border-left-[3px] border-left-yellow rounded-[4px] overflow-hidden transition-all duration-300 group-hover:border-yellow">
 
         {/* Blueprint micro-grid */}
         <div className="absolute inset-0 pointer-events-none opacity-100" style={{
@@ -606,25 +606,25 @@ function BlueprintCard({ mission, index }: { mission: typeof BLUEPRINT_MISSIONS[
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06]">
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-[9px] text-white/25 tracking-[0.3em] uppercase">Project</span>
-            <span className="font-mono text-[10px] text-[#00ffcc]/60 tracking-[0.25em] font-bold">{mission.num}</span>
+            <span className="font-mono text-[9px] text-gray-900/25 tracking-[0.3em] uppercase">Project</span>
+            <span className="font-mono text-[10px] text-[#FFD600]/60 tracking-[0.25em] font-bold">{mission.num}</span>
           </div>
           <motion.div
-            animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
             className="flex items-center gap-1.5"
           >
             <motion.div
-              className="w-1.5 h-1.5 rounded-full bg-[#00ffcc]/70"
+              className="w-1.5 h-1.5 rounded-full bg-[#FFD600]/70"
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 1.2, repeat: Infinity }}
             />
-            <span className="font-mono text-[9px] text-[#00ffcc]/50 tracking-[0.2em] uppercase">Accessing</span>
+            <span className="font-mono text-[9px] text-[#FFD600]/50 tracking-[0.2em] uppercase">Accessing</span>
           </motion.div>
         </div>
 
         {/* SVG Schematic Area */}
-        <div className="relative px-5 pt-4 pb-2" style={{ height: '168px' }}>
+        <div className="relative px-5 pt-4 pb-2 group-hover:scale-105 transition-transform duration-500 ease-out" style={{ height: '168px' }}>
           <svg viewBox="0 0 240 128" className="w-full h-full overflow-visible">
             {renderSchematic()}
           </svg>
@@ -632,27 +632,27 @@ function BlueprintCard({ mission, index }: { mission: typeof BLUEPRINT_MISSIONS[
 
         {/* Project Info */}
         <div className="px-5 pb-5 pt-1 border-t border-white/[0.06]">
-          <h3 className="text-white font-bold text-base tracking-tight mb-1.5 leading-snug">
+          <h3 className="text-gray-900 font-bold text-base tracking-tight mb-1.5 leading-snug">
             {mission.title}
           </h3>
           <motion.p
             initial={{ opacity: 0 }}
-            animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.45, delay: 0.15 }}
             className="text-gray-500 text-xs leading-relaxed mb-3"
           >
             {mission.desc}
           </motion.p>
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[9px] text-white/25 tracking-[0.2em] uppercase">{mission.status}</span>
-            <span className="font-mono text-[9px] text-[#00ffcc]/35 tracking-[0.2em]">{mission.timeline}</span>
+            <span className="font-mono text-[9px] text-gray-900/25 tracking-[0.2em] uppercase">{mission.status}</span>
+            <span className="font-mono text-[9px] text-[#FFD600]/35 tracking-[0.2em]">{mission.timeline}</span>
           </div>
         </div>
 
         {/* Bottom glow on hover */}
         <motion.div
-          className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00ffcc]/40 to-transparent"
-          animate={hovered ? { opacity: 1 } : { opacity: 0 }}
+          className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#FFD600]/40 to-transparent"
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
         />
       </div>
@@ -672,10 +672,10 @@ function VideoCard({ video, index }: { video: typeof VIDEOS[0]; index: number })
       viewport={{ once: true }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] cursor-pointer"
+      className="card-light cursor-pointer group flex flex-col h-full relative"
     >
       {/* Thumbnail area */}
-      <div className="relative h-44 bg-gradient-to-br from-gray-900 to-black overflow-hidden">
+      <div className="relative h-44 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-6xl opacity-10">🚁</div>
         </div>
@@ -688,7 +688,7 @@ function VideoCard({ video, index }: { video: typeof VIDEOS[0]; index: number })
               animate={{ y: '200%' }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.2, ease: 'linear' }}
-              className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"
+              className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-yellow/60 to-transparent"
             />
           )}
         </AnimatePresence>
@@ -702,18 +702,18 @@ function VideoCard({ video, index }: { video: typeof VIDEOS[0]; index: number })
           >
             {/* Pulse rings */}
             <motion.div
-              className="absolute inset-0 rounded-full border border-[#00ffcc]/40"
+              className="absolute inset-0 rounded-full border border-[#FFD600]/40"
               animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}
               transition={{ duration: 1.8, repeat: Infinity }}
             />
             <motion.div
-              className="absolute inset-0 rounded-full border border-[#00ffcc]/20"
+              className="absolute inset-0 rounded-full border border-[#FFD600]/20"
               animate={{ scale: [1, 2, 1], opacity: [0.3, 0, 0.3] }}
               transition={{ duration: 1.8, repeat: Infinity, delay: 0.4 }}
             />
-            <div className="relative w-12 h-12 rounded-full bg-[#00ffcc]/10 border border-[#00ffcc]/50 backdrop-blur-sm flex items-center justify-center">
+            <div className="relative w-12 h-12 rounded-full bg-[#FFD600]/10 border border-[#FFD600]/50 backdrop-blur-sm flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M5 3.5L15 9L5 14.5V3.5Z" fill="#00ffcc" />
+                <path d="M5 3.5L15 9L5 14.5V3.5Z" fill="#FFD600" />
               </svg>
             </div>
           </motion.div>
@@ -721,20 +721,20 @@ function VideoCard({ video, index }: { video: typeof VIDEOS[0]; index: number })
 
         {/* Tag */}
         <div className="absolute top-3 left-3">
-          <span className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 bg-[#00ffcc]/10 border border-[#00ffcc]/30 text-[#00ffcc] rounded-full">
+          <span className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 bg-[#FFD600]/10 border border-[#FFD600]/30 text-[#FFD600] rounded-full">
             {video.tag}
           </span>
         </div>
 
         {/* Duration */}
-        <div className="absolute bottom-3 right-3 text-xs text-white/60 font-mono bg-black/50 px-2 py-0.5 rounded">
+        <div className="absolute bottom-3 right-3 text-xs text-gray-900/60 font-mono bg-white/50 px-2 py-0.5 rounded">
           {video.duration}
         </div>
       </div>
 
       <div className="p-4">
-        <div className="text-xs text-[#00ffcc]/70 font-bold tracking-widest uppercase mb-1.5">Mission Replay</div>
-        <h4 className="text-white font-semibold text-sm leading-snug group-hover:text-[#00ffcc] transition-colors duration-300">
+        <div className="text-xs text-[#FFD600]/70 font-bold tracking-widest uppercase mb-1.5">Mission Replay</div>
+        <h4 className="text-gray-900 font-semibold text-sm leading-snug group-hover:text-[#FFD600] transition-colors duration-300">
           {video.title}
         </h4>
       </div>
@@ -776,10 +776,10 @@ function RadarMissions() {
   });
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: '#010810' }}>
+    <section className="relative py-24 bg-white text-gray-900 overflow-hidden">
       {/* Scanline overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,255,204,0.008) 3px, rgba(0,255,204,0.008) 4px)',
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,214,0,0.008) 3px, rgba(255,214,0,0.008) 4px)',
       }} />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
@@ -791,11 +791,11 @@ function RadarMissions() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Incoming</span>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-3">
+          <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Incoming</span>
+          <h2 className="text-4xl md:text-5xl font-condensed font-extrabold tracking-tight text-gray-900 mb-3 uppercase">
             Future Missions
           </h2>
-          <p className="text-white/20 text-sm font-mono tracking-widest">HOVER A NODE TO ACTIVATE MISSION</p>
+          <p className="text-gray-900/20 text-sm font-mono tracking-widest">HOVER A NODE TO ACTIVATE MISSION</p>
         </motion.div>
 
         {/* Radar */}
@@ -806,16 +806,16 @@ function RadarMissions() {
           viewport={{ once: true }}
           className="relative max-w-[580px] mx-auto"
         >
-          <svg viewBox="0 0 600 600" className="w-full" style={{ filter: 'drop-shadow(0 0 40px rgba(0,255,204,0.08))' }}>
+          <svg viewBox="0 0 600 600" className="w-full" style={{ filter: 'drop-shadow(0 0 40px rgba(255,214,0,0.08))' }}>
             <defs>
               <radialGradient id="radar-bg" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="rgba(0,255,204,0.04)" />
+                <stop offset="0%" stopColor="rgba(255,214,0,0.04)" />
                 <stop offset="100%" stopColor="rgba(0,0,0,0)" />
               </radialGradient>
               <radialGradient id="sweep-glow" cx="0%" cy="50%" r="100%" gradientUnits="userSpaceOnUse"
                 x1={CX} y1={CY} x2={CX + OUTER_R} y2={CY}>
-                <stop offset="0%" stopColor="rgba(0,255,204,0)" />
-                <stop offset="100%" stopColor="rgba(0,255,204,0.4)" />
+                <stop offset="0%" stopColor="rgba(255,214,0,0)" />
+                <stop offset="100%" stopColor="rgba(255,214,0,0.4)" />
               </radialGradient>
             </defs>
 
@@ -825,7 +825,7 @@ function RadarMissions() {
             {/* Concentric rings */}
             {[1, 0.75, 0.5, 0.25].map((ratio, i) => (
               <circle key={i} cx={CX} cy={CY} r={OUTER_R * ratio}
-                stroke={`rgba(0,255,204,${ratio === 1 ? 0.18 : 0.07})`}
+                stroke={`rgba(255,214,0,${ratio === 1 ? 0.18 : 0.07})`}
                 strokeWidth={ratio === 1 ? 1 : 0.5} fill="none"
               />
             ))}
@@ -838,14 +838,14 @@ function RadarMissions() {
               [CX + OUTER_R * 0.707, CY - OUTER_R * 0.707, CX - OUTER_R * 0.707, CY + OUTER_R * 0.707],
             ].map(([x1, y1, x2, y2], i) => (
               <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-                stroke={`rgba(0,255,204,${i < 2 ? 0.07 : 0.03})`} strokeWidth="0.5"
+                stroke={`rgba(255,214,0,${i < 2 ? 0.07 : 0.03})`} strokeWidth="0.5"
               />
             ))}
 
             {/* Tick marks around perimeter */}
             {ticks.map((t, i) => (
               <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2}
-                stroke={`rgba(0,255,204,${t.op})`} strokeWidth={t.w}
+                stroke={`rgba(255,214,0,${t.op})`} strokeWidth={t.w}
               />
             ))}
 
@@ -854,21 +854,21 @@ function RadarMissions() {
               ['E', CX + OUTER_R + 14, CY + 3, 'start'], ['W', CX - OUTER_R - 14, CY + 3, 'end']].map(
               ([label, x, y, anchor]) => (
                 <text key={label as string} x={x as number} y={y as number}
-                  textAnchor={anchor as string} fontSize="8"
-                  fill="rgba(0,255,204,0.25)" fontFamily="monospace"
+                  textAnchor={anchor as "inherit" | "end" | "middle" | "start"} fontSize="8"
+                  fill="rgba(255,214,0,0.25)" fontFamily="monospace"
                 >{label}</text>
               )
             )}
 
             {/* Range labels */}
-            <text x={CX + 6} y={CY - OUTER_R * 0.75 + 3} fontSize="6" fill="rgba(0,255,204,0.18)" fontFamily="monospace">75km</text>
-            <text x={CX + 6} y={CY - OUTER_R * 0.50 + 3} fontSize="6" fill="rgba(0,255,204,0.18)" fontFamily="monospace">50km</text>
-            <text x={CX + 6} y={CY - OUTER_R * 0.25 + 3} fontSize="6" fill="rgba(0,255,204,0.18)" fontFamily="monospace">25km</text>
+            <text x={CX + 6} y={CY - OUTER_R * 0.75 + 3} fontSize="6" fill="rgba(255,214,0,0.18)" fontFamily="monospace">75km</text>
+            <text x={CX + 6} y={CY - OUTER_R * 0.50 + 3} fontSize="6" fill="rgba(255,214,0,0.18)" fontFamily="monospace">50km</text>
+            <text x={CX + 6} y={CY - OUTER_R * 0.25 + 3} fontSize="6" fill="rgba(255,214,0,0.18)" fontFamily="monospace">25km</text>
 
             {/* Ghost blips — decorative background contacts */}
             {GHOST_BLIPS.map((b, i) => (
               <motion.circle key={i} cx={b.x} cy={b.y} r={b.r}
-                fill="rgba(0,255,204,0.25)"
+                fill="rgba(255,214,0,0.25)"
                 animate={{ opacity: [0.25, 0.05, 0.25] }}
                 transition={{ duration: b.d, repeat: Infinity, delay: i * 0.4 }}
               />
@@ -881,27 +881,27 @@ function RadarMissions() {
               style={{ transformOrigin: `${CX}px ${CY}px` }}
             >
               {/* Sweep trail wedge */}
-              <path d={trailPath} fill="rgba(0,255,204,0.055)" />
+              <path d={trailPath} fill="rgba(255,214,0,0.055)" />
               {/* Bright sweep edge line */}
               <line x1={CX} y1={CY} x2={CX + OUTER_R} y2={CY}
-                stroke="rgba(0,255,204,0.7)" strokeWidth="1.5"
+                stroke="rgba(255,214,0,0.7)" strokeWidth="1.5"
               />
               {/* Bright tip dot */}
-              <circle cx={CX + OUTER_R} cy={CY} r="2.5" fill="rgba(0,255,204,0.85)" />
+              <circle cx={CX + OUTER_R} cy={CY} r="2.5" fill="rgba(255,214,0,0.85)" />
             </motion.g>
 
             {/* ── CENTER HUB ── */}
             <motion.circle cx={CX} cy={CY} r={22}
-              stroke="rgba(0,255,204,0.12)" strokeWidth="1" fill="rgba(0,0,0,0.8)"
+              stroke="rgba(255,214,0,0.12)" strokeWidth="1" fill="rgba(0,0,0,0.8)"
               animate={{ opacity: [0.12, 0.3, 0.12] }}
               transition={{ duration: 2.5, repeat: Infinity }}
             />
-            <circle cx={CX} cy={CY} r={4} fill="rgba(0,255,204,0.7)" />
+            <circle cx={CX} cy={CY} r={4} fill="rgba(255,214,0,0.7)" />
             <circle cx={CX} cy={CY} r={1.5} fill="#010810" />
             <text x={CX} y={CY + 32} textAnchor="middle" fontSize="7"
-              fill="rgba(0,255,204,0.2)" fontFamily="monospace">SKYWORKS</text>
+              fill="rgba(255,214,0,0.2)" fontFamily="monospace">SKYWORKS</text>
             <text x={CX} y={CY + 42} textAnchor="middle" fontSize="5.5"
-              fill="rgba(0,255,204,0.13)" fontFamily="monospace">MISSION CONTROL</text>
+              fill="rgba(255,214,0,0.13)" fontFamily="monospace">MISSION CONTROL</text>
 
             {/* ── MISSION NODES ── */}
             {RADAR_NODES.map(node => {
@@ -914,7 +914,7 @@ function RadarMissions() {
                 >
                   {/* Dashed line from center */}
                   <motion.line x1={CX} y1={CY} x2={node.x} y2={node.y}
-                    stroke="rgba(0,255,204,0.12)" strokeWidth="0.5" strokeDasharray="4 4"
+                    stroke="rgba(255,214,0,0.12)" strokeWidth="0.5" strokeDasharray="4 4"
                     animate={{ opacity: isActive ? 0.6 : 0.25 }}
                     transition={{ duration: 0.3 }}
                   />
@@ -926,7 +926,7 @@ function RadarMissions() {
                     { delay: 1.1, dur: 1.6 },
                   ].map((p, pi) => (
                     <motion.circle key={pi} cx={node.x} cy={node.y}
-                      stroke="rgba(0,255,204,0.45)" strokeWidth="0.8" fill="none"
+                      stroke="rgba(255,214,0,0.45)" strokeWidth="0.8" fill="none"
                       initial={{ r: 10, opacity: 0.45 }}
                       animate={{ r: 72, opacity: 0 }}
                       transition={{
@@ -938,7 +938,7 @@ function RadarMissions() {
 
                   {/* Outer ring */}
                   <motion.circle cx={node.x} cy={node.y}
-                    stroke={isActive ? 'rgba(0,255,204,0.5)' : 'rgba(0,255,204,0.22)'}
+                    stroke={isActive ? 'rgba(255,214,0,0.5)' : 'rgba(255,214,0,0.22)'}
                     strokeWidth="0.8" fill="none"
                     animate={{ r: isActive ? 14 : 10 }}
                     initial={{ r: 10 }}
@@ -947,7 +947,7 @@ function RadarMissions() {
 
                   {/* Inner node */}
                   <motion.circle cx={node.x} cy={node.y}
-                    fill={isActive ? '#00ffcc' : 'rgba(0,255,204,0.55)'}
+                    fill={isActive ? '#FFD600' : 'rgba(255,214,0,0.55)'}
                     animate={{ r: isActive ? 7 : 4.5 }}
                     initial={{ r: 4.5 }}
                     transition={{ duration: 0.3 }}
@@ -956,10 +956,10 @@ function RadarMissions() {
                   {/* Cross-hair tick on node when active */}
                   {isActive && (
                     <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-                      <line x1={node.x - 18} y1={node.y} x2={node.x - 10} y2={node.y} stroke="rgba(0,255,204,0.5)" strokeWidth="0.7" />
-                      <line x1={node.x + 10} y1={node.y} x2={node.x + 18} y2={node.y} stroke="rgba(0,255,204,0.5)" strokeWidth="0.7" />
-                      <line x1={node.x} y1={node.y - 18} x2={node.x} y2={node.y - 10} stroke="rgba(0,255,204,0.5)" strokeWidth="0.7" />
-                      <line x1={node.x} y1={node.y + 10} x2={node.x} y2={node.y + 18} stroke="rgba(0,255,204,0.5)" strokeWidth="0.7" />
+                      <line x1={node.x - 18} y1={node.y} x2={node.x - 10} y2={node.y} stroke="rgba(255,214,0,0.5)" strokeWidth="0.7" />
+                      <line x1={node.x + 10} y1={node.y} x2={node.x + 18} y2={node.y} stroke="rgba(255,214,0,0.5)" strokeWidth="0.7" />
+                      <line x1={node.x} y1={node.y - 18} x2={node.x} y2={node.y - 10} stroke="rgba(255,214,0,0.5)" strokeWidth="0.7" />
+                      <line x1={node.x} y1={node.y + 10} x2={node.x} y2={node.y + 18} stroke="rgba(255,214,0,0.5)" strokeWidth="0.7" />
                     </motion.g>
                   )}
 
@@ -969,7 +969,7 @@ function RadarMissions() {
                     y={node.y + node.anchorY}
                     textAnchor={node.textAnchor}
                     fontSize="8" fontFamily="monospace" fontWeight="bold"
-                    fill={isActive ? 'rgba(0,255,204,0.95)' : 'rgba(255,255,255,0.45)'}
+                    fill={isActive ? 'rgba(255,214,0,0.95)' : 'rgba(255,255,255,0.45)'}
                   >
                     {node.num}
                   </text>
@@ -978,7 +978,7 @@ function RadarMissions() {
                     y={node.y + node.anchorY + 11}
                     textAnchor={node.textAnchor}
                     fontSize="7" fontFamily="monospace"
-                    fill={isActive ? 'rgba(0,255,204,0.7)' : 'rgba(255,255,255,0.25)'}
+                    fill={isActive ? 'rgba(255,214,0,0.7)' : 'rgba(255,255,255,0.25)'}
                   >
                     {node.label}
                   </text>
@@ -1000,13 +1000,13 @@ function RadarMissions() {
                 className="text-center max-w-lg px-4"
               >
                 <div className="flex items-center justify-center gap-3 mb-3">
-                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#00ffcc]/50" />
-                  <span className="font-mono text-[10px] text-[#00ffcc] tracking-[0.3em] uppercase">
+                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#FFD600]/50" />
+                  <span className="font-mono text-[10px] text-[#FFD600] tracking-[0.3em] uppercase">
                     {RADAR_NODES[activeNode].num} — Mission Activated
                   </span>
-                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#00ffcc]/50" />
+                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#FFD600]/50" />
                 </div>
-                <h3 className="text-white font-black text-xl md:text-2xl tracking-tight mb-3">
+                <h3 className="text-gray-900 font-black text-xl md:text-2xl tracking-tight mb-3">
                   {RADAR_NODES[activeNode].label}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-5">
@@ -1014,13 +1014,13 @@ function RadarMissions() {
                 </p>
                 <div className="flex items-center justify-center gap-10">
                   <div>
-                    <div className="font-mono text-[9px] text-white/20 tracking-[0.25em] uppercase mb-1">Status</div>
-                    <div className="font-mono text-xs font-bold text-[#00ffcc]">{RADAR_NODES[activeNode].status}</div>
+                    <div className="font-mono text-[9px] text-gray-900/20 tracking-[0.25em] uppercase mb-1">Status</div>
+                    <div className="font-mono text-xs font-bold text-[#FFD600]">{RADAR_NODES[activeNode].status}</div>
                   </div>
                   <div className="h-8 w-px bg-white/10" />
                   <div>
-                    <div className="font-mono text-[9px] text-white/20 tracking-[0.25em] uppercase mb-1">Timeline</div>
-                    <div className="font-mono text-xs font-bold text-[#00ffcc]">{RADAR_NODES[activeNode].timeline}</div>
+                    <div className="font-mono text-[9px] text-gray-900/20 tracking-[0.25em] uppercase mb-1">Timeline</div>
+                    <div className="font-mono text-xs font-bold text-[#FFD600]">{RADAR_NODES[activeNode].timeline}</div>
                   </div>
                 </div>
               </motion.div>
@@ -1029,7 +1029,7 @@ function RadarMissions() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="font-mono text-[11px] text-white/15 tracking-[0.25em] uppercase"
+                className="font-mono text-[11px] text-gray-900/15 tracking-[0.25em] uppercase"
               >
                 ─── Awaiting Target Lock ───
               </motion.p>
@@ -1052,12 +1052,11 @@ export default function Blogs() {
   const [subscribed, setSubscribed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#03070c] text-white overflow-x-hidden">
+    <div className="min-h-[70vh] flex flex-col flex-grow bg-white text-gray-600 overflow-x-hidden font-sans pt-16">
 
       {/* ══ SECTION 1: HERO ════════════════════════════════════════ */}
       <section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        ref={heroRef} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white text-gray-900"
       >
         <GridBackground />
         <FloatingParticles count={40} />
@@ -1074,7 +1073,7 @@ export default function Blogs() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex items-center justify-center gap-3 mb-8"
           >
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase">
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase">
               SkyWorks Flight Log
             </span>
           </motion.div>
@@ -1087,7 +1086,7 @@ export default function Blogs() {
                 initial={{ y: '100%', opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 + i * 0.04, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="inline-block text-7xl md:text-9xl font-black tracking-tighter text-white"
+                className="inline-block text-7xl md:text-9xl font-condensed font-extrabold tracking-tighter text-gray-900 uppercase"
                 style={{ display: char === ' ' ? 'inline' : 'inline-block' }}
               >
                 {char === ' ' ? '\u00A0' : char}
@@ -1099,7 +1098,7 @@ export default function Blogs() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-gray-400 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed mb-10"
+            className="text-gray-600 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed mb-10"
           >
             Stories, missions, innovations and aerial perspectives from the future of autonomous flight.
           </motion.p>
@@ -1111,16 +1110,16 @@ export default function Blogs() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <motion.button
-              whileHover={{ scale: 1.04, boxShadow: '0 0 32px rgba(0,255,204,0.3)' }}
+              whileHover={{ scale: 1.04, boxShadow: '0 0 32px rgba(255,214,0,0.3)' }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 bg-[#00ffcc] text-black font-bold rounded-full text-sm tracking-wide"
+              className="px-8 py-4 bg-[#FFD600] text-black font-bold rounded-full text-sm tracking-wide"
             >
               Explore Missions
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 border border-white/20 text-white rounded-full text-sm tracking-wide hover:border-[#00ffcc]/50 transition-colors"
+              className="px-8 py-4 border border-gray-300 text-gray-900 rounded-full text-sm tracking-wide hover:border-[#FFD600]/50 transition-colors"
             >
               Watch Showreel
             </motion.button>
@@ -1139,7 +1138,7 @@ export default function Blogs() {
         {/* Scanning line */}
         <motion.div
           style={{ y: scanY }}
-          className="absolute inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent pointer-events-none z-20"
+          className="absolute inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-yellow/50 to-transparent pointer-events-none z-20"
         />
 
         {/* Scroll hint */}
@@ -1149,12 +1148,12 @@ export default function Blogs() {
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
           <span className="text-gray-500 text-xs tracking-widest uppercase">Scroll</span>
-          <div className="w-px h-10 bg-gradient-to-b from-[#00ffcc]/50 to-transparent" />
+          <div className="w-px h-10 bg-gradient-to-b from-[#FFD600]/50 to-transparent" />
         </motion.div>
       </section>
 
       {/* ══ SECTION 2: FEATURED MISSION ════════════════════════════ */}
-      <section className="relative py-32 px-6">
+      <section className="relative py-32 px-6 bg-white text-gray-900">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1163,43 +1162,43 @@ export default function Blogs() {
             viewport={{ once: true }}
             className="flex items-center gap-3 mb-16"
           >
-            <div className="h-px flex-1 bg-gradient-to-r from-[#00ffcc]/40 to-transparent" />
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.3em] uppercase">Featured Mission</span>
-            <div className="h-px flex-1 bg-gradient-to-l from-[#00ffcc]/40 to-transparent" />
+            <div className="h-px flex-1 bg-gradient-to-r from-[#FFD600]/40 to-transparent" />
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.3em] uppercase">Featured Mission</span>
+            <div className="h-px flex-1 bg-gradient-to-l from-[#FFD600]/40 to-transparent" />
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-white/10">
+          <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-gray-200">
             {/* Image side */}
             <motion.div
               initial={{ opacity: 0, x: -80 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
               viewport={{ once: true }}
-              className="relative h-80 lg:h-auto min-h-[400px] bg-gradient-to-br from-slate-900 via-slate-800 to-black overflow-hidden group"
+              className="relative h-80 lg:h-auto min-h-[400px] bg-gradient-to-br from-gray-100 via-gray-200 to-white overflow-hidden group"
             >
               {/* Simulated aerial image */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-[160px] opacity-10">🌊</div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 to-blue-900/20" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,204,0.05)_0%,transparent_70%)]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-light/20 to-blue-900/20" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,214,0,0.05)_0%,transparent_70%)]" />
 
               {/* Zoom on hover */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"
                 whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.6 }}
               />
 
               {/* Mission badge */}
               <div className="absolute top-6 left-6">
-                <span className="text-xs font-bold tracking-widest uppercase px-3 py-1.5 bg-[#00ffcc]/10 border border-[#00ffcc]/40 text-[#00ffcc] rounded-full backdrop-blur-sm">
+                <span className="text-xs font-bold tracking-widest uppercase px-3 py-1.5 bg-[#FFD600]/10 border border-[#FFD600]/40 text-[#FFD600] rounded-full backdrop-blur-sm">
                   Active Mission
                 </span>
               </div>
 
               {/* Coords overlay */}
-              <div className="absolute bottom-6 left-6 font-mono text-xs text-white/40">
+              <div className="absolute bottom-6 left-6 font-mono text-xs text-gray-900/40">
                 23.7491°N, 80.3286°E · ALT 450m · 2026-05-28
               </div>
             </motion.div>
@@ -1216,7 +1215,7 @@ export default function Blogs() {
                 <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-full">
                   Maritime
                 </span>
-                <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 bg-white/5 border border-white/10 text-gray-400 rounded-full">
+                <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 bg-white border border-gray-200 text-gray-600 rounded-full">
                   10 min read
                 </span>
               </div>
@@ -1228,7 +1227,7 @@ export default function Blogs() {
                   whileInView={{ y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                   viewport={{ once: true }}
-                  className="text-3xl md:text-4xl font-black text-white leading-tight"
+                  className="text-3xl md:text-4xl font-black text-gray-900 leading-tight"
                 >
                   Autonomous Coastal Surveillance Mission
                 </motion.h2>
@@ -1239,7 +1238,7 @@ export default function Blogs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.35 }}
                 viewport={{ once: true }}
-                className="text-gray-400 leading-relaxed mb-4"
+                className="text-gray-600 leading-relaxed mb-4"
               >
                 Deploying a fleet of 8 autonomous drones across 340km of coastline for real-time surveillance, illegal activity detection, and environmental monitoring — without a single human pilot.
               </motion.p>
@@ -1256,8 +1255,8 @@ export default function Blogs() {
 
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {[['340 km', 'Coastline'], ['72 hrs', 'Duration'], ['8 Units', 'Drones']].map(([v, l]) => (
-                  <div key={l} className="border border-white/10 rounded-xl p-3 text-center bg-white/[0.02]">
-                    <div className="text-[#00ffcc] font-bold text-lg">{v}</div>
+                  <div key={l} className="border border-gray-200 rounded-xl p-3 text-center bg-white/[0.02]">
+                    <div className="text-[#FFD600] font-bold text-lg">{v}</div>
                     <div className="text-gray-500 text-xs mt-0.5">{l}</div>
                   </div>
                 ))}
@@ -1265,11 +1264,11 @@ export default function Blogs() {
 
               <motion.button
                 whileHover={{ x: 6 }}
-                className="flex items-center gap-2 text-[#00ffcc] font-bold text-sm tracking-wide group"
+                className="flex items-center gap-2 text-[#FFD600] font-bold text-sm tracking-wide group"
               >
                 Read Full Mission Brief
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="group-hover:translate-x-1 transition-transform">
-                  <path d="M3.75 9H14.25M14.25 9L10.5 5.25M14.25 9L10.5 12.75" stroke="#00ffcc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M3.75 9H14.25M14.25 9L10.5 5.25M14.25 9L10.5 12.75" stroke="#FFD600" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </motion.button>
             </motion.div>
@@ -1278,7 +1277,7 @@ export default function Blogs() {
       </section>
 
       {/* ══ SECTION 3: LATEST INSIGHTS ═════════════════════════════ */}
-      <section className="relative py-24 px-6 bg-gradient-to-b from-transparent via-white/[0.015] to-transparent">
+      <section className="relative py-24 px-6 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1287,8 +1286,8 @@ export default function Blogs() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Latest Insights</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Latest Insights</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-gray-900">
               From The Flight Log
             </h2>
           </motion.div>
@@ -1307,9 +1306,9 @@ export default function Blogs() {
             className="text-center mt-12"
           >
             <motion.button
-              whileHover={{ scale: 1.04, borderColor: 'rgba(0,255,204,0.6)' }}
+              whileHover={{ scale: 1.04, borderColor: 'rgba(255,214,0,0.6)' }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-3 border border-white/20 text-gray-300 rounded-full text-sm font-medium tracking-wide hover:text-white transition-colors"
+              className="px-8 py-3 border border-gray-300 text-gray-600 rounded-full text-sm font-medium tracking-wide hover:text-gray-900 transition-colors"
             >
               Load More Stories
             </motion.button>
@@ -1318,7 +1317,7 @@ export default function Blogs() {
       </section>
 
       {/* ══ SECTION 4: FLIGHT TIMELINE ═════════════════════════════ */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      <section className="relative py-32 px-6 overflow-hidden bg-white">
         <GridBackground />
 
         <div className="max-w-4xl mx-auto">
@@ -1329,8 +1328,8 @@ export default function Blogs() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Flight Timeline</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Flight Timeline</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-gray-900">
               Our Journey in the Sky
             </h2>
           </motion.div>
@@ -1339,7 +1338,7 @@ export default function Blogs() {
             {/* Animated centre line */}
             <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-white/10" />
             <motion.div
-              className="absolute left-1/2 -translate-x-1/2 top-0 w-px bg-gradient-to-b from-[#00ffcc] to-transparent"
+              className="absolute left-1/2 -translate-x-1/2 top-0 w-px bg-gradient-to-b from-[#FFD600] to-transparent"
               initial={{ height: 0 }}
               whileInView={{ height: '100%' }}
               transition={{ duration: 2.5, ease: 'easeOut' }}
@@ -1354,9 +1353,9 @@ export default function Blogs() {
       </section>
 
       {/* ══ SECTION 5: MISSION STATISTICS ══════════════════════════ */}
-      <section className="relative py-32 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#00ffcc]/5 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,204,0.04)_0%,transparent_70%)] pointer-events-none" />
+      <section className="relative py-32 px-6 overflow-hidden bg-gray-50 border-y border-gray-200">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFD600]/5 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,214,0,0.04)_0%,transparent_70%)] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -1366,8 +1365,8 @@ export default function Blogs() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase block mb-4">By The Numbers</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase block mb-4">By The Numbers</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-gray-900">
               Mission Statistics
             </h2>
           </motion.div>
@@ -1389,7 +1388,7 @@ export default function Blogs() {
       </section>
 
       {/* ══ SECTION 6: MEDIA VAULT (GALLERY) ═══════════════════════ */}
-      <section className="relative py-24 px-6">
+      <section className="relative py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1398,8 +1397,8 @@ export default function Blogs() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Media Vault</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Media Vault</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-gray-900">
               Captured from Above
             </h2>
           </motion.div>
@@ -1418,19 +1417,19 @@ export default function Blogs() {
                 transition={{ duration: 0.7 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.015, zIndex: 10 }}
-                className="md:col-span-2 h-72 md:h-96 relative rounded-2xl overflow-hidden border border-white/10 group cursor-pointer"
+                className="md:col-span-2 h-72 md:h-96 relative rounded-2xl overflow-hidden border border-gray-200 group cursor-pointer"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100">
                   <div className="absolute inset-0 flex items-center justify-center opacity-5 text-[160px] select-none">{item.emoji}</div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent" />
                 <motion.div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent -translate-x-full" whileHover={{ translateX: '200%' }} transition={{ duration: 0.7 }} />
                 <div className="absolute top-3 right-3 w-8 h-8 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8.5 1.5h4v4M5.5 12.5h-4v-4M13 1L8 6M6 8l-5 5" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>
                 </div>
                 <div className="absolute bottom-5 left-5">
-                  <div className="text-xs font-bold tracking-widest uppercase text-[#00ffcc]/80 mb-1">{item.tag}</div>
-                  <div className="text-white text-base font-semibold">{item.label}</div>
+                  <div className="text-xs font-bold tracking-widest uppercase text-[#FFD600]/80 mb-1">{item.tag}</div>
+                  <div className="text-gray-900 text-base font-semibold">{item.label}</div>
                 </div>
               </motion.div>
             ))}
@@ -1445,16 +1444,16 @@ export default function Blogs() {
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02, zIndex: 10 }}
-                  className="flex-1 min-h-[160px] relative rounded-2xl overflow-hidden border border-white/10 group cursor-pointer"
+                  className="flex-1 min-h-[160px] relative rounded-2xl overflow-hidden border border-gray-200 group cursor-pointer"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100">
                     <div className="absolute inset-0 flex items-center justify-center opacity-5 text-8xl select-none">{item.emoji}</div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent" />
                   <motion.div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent -translate-x-full" whileHover={{ translateX: '200%' }} transition={{ duration: 0.6 }} />
                   <div className="absolute bottom-3 left-4">
-                    <div className="text-[10px] font-bold tracking-widest uppercase text-[#00ffcc]/70 mb-0.5">{item.tag}</div>
-                    <div className="text-white text-sm font-semibold">{item.label}</div>
+                    <div className="text-[10px] font-bold tracking-widest uppercase text-[#FFD600]/70 mb-0.5">{item.tag}</div>
+                    <div className="text-gray-900 text-sm font-semibold">{item.label}</div>
                   </div>
                 </motion.div>
               ))}
@@ -1469,19 +1468,19 @@ export default function Blogs() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02, zIndex: 10 }}
-                className="h-52 relative rounded-2xl overflow-hidden border border-white/10 group cursor-pointer"
+                className="h-52 relative rounded-2xl overflow-hidden border border-gray-200 group cursor-pointer"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100">
                   <div className="absolute inset-0 flex items-center justify-center opacity-5 text-8xl select-none">{item.emoji}</div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent" />
                 <motion.div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent -translate-x-full" whileHover={{ translateX: '200%' }} transition={{ duration: 0.6 }} />
                 <div className="absolute top-3 right-3 w-7 h-7 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M8.5 1.5h4v4M5.5 12.5h-4v-4M13 1L8 6M6 8l-5 5" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>
                 </div>
                 <div className="absolute bottom-3 left-4">
-                  <div className="text-[10px] font-bold tracking-widest uppercase text-[#00ffcc]/70 mb-0.5">{item.tag}</div>
-                  <div className="text-white text-sm font-semibold">{item.label}</div>
+                  <div className="text-[10px] font-bold tracking-widest uppercase text-[#FFD600]/70 mb-0.5">{item.tag}</div>
+                  <div className="text-gray-900 text-sm font-semibold">{item.label}</div>
                 </div>
               </motion.div>
             ))}
@@ -1491,7 +1490,7 @@ export default function Blogs() {
 
 
       {/* ══ SECTION 7 (extra): VIDEO SHOWCASE ══════════════════════ */}
-      <section className="relative py-24 px-6 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent">
+      <section className="relative py-24 px-6 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1500,8 +1499,8 @@ export default function Blogs() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Mission Replays</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Mission Replays</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-gray-900">
               Watch Us Fly
             </h2>
           </motion.div>
@@ -1515,7 +1514,7 @@ export default function Blogs() {
       </section>
 
       {/* ══ SECTION 8: FUTURE MISSIONS — FOLDER CARDS ══════════════ */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      <section className="relative py-32 px-6 overflow-hidden bg-white">
         <GridBackground />
         <FloatingParticles count={20} />
 
@@ -1527,8 +1526,8 @@ export default function Blogs() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="text-[#00ffcc] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Incoming</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
+            <span className="text-[#FFD600] text-xs font-bold tracking-[0.35em] uppercase block mb-4">Incoming</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-gray-900">
               Future Missions
             </h2>
             <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm">
@@ -1545,17 +1544,19 @@ export default function Blogs() {
       </section>
 
       {/* ══ SECTION 9: NEWSLETTER ══════════════════════════════════ */}
-      <section className="relative py-32 px-6">
+      <section className="relative py-32 px-6 bg-gray-50">
         <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             viewport={{ once: true }}
-            className="relative rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-12 text-center overflow-hidden"
+            className="relative rounded-3xl p-[2px] overflow-hidden"
           >
+            <div className="rotating-glow-bg" />
+            <div className="relative rounded-[calc(1.5rem-2px)] bg-gray-50 border border-gray-200 p-12 text-center z-10 h-full">
             {/* Background glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,204,0.06)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,214,0,0.06)_0%,transparent_70%)] pointer-events-none" />
 
             {/* Floating specks */}
             <FloatingParticles count={12} />
@@ -1565,19 +1566,19 @@ export default function Blogs() {
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="w-14 h-14 rounded-2xl bg-[#00ffcc]/10 border border-[#00ffcc]/30 flex items-center justify-center mx-auto mb-6"
+              className="w-14 h-14 rounded-2xl bg-[#FFD600]/10 border border-[#FFD600]/30 flex items-center justify-center mx-auto mb-6"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#00ffcc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#FFD600" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </motion.div>
 
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-3">
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-gray-900 mb-3">
               Stay Connected To The
               <br />
-              <span className="text-[#00ffcc]">Future of Flight</span>
+              <span className="text-[#FFD600]">Future of Flight</span>
             </h2>
-            <p className="text-gray-400 text-sm mb-8 max-w-sm mx-auto">
+            <p className="text-gray-600 text-sm mb-8 max-w-sm mx-auto">
               Mission updates, AI research breakthroughs, and behind-the-scenes footage — delivered to your inbox.
             </p>
 
@@ -1589,12 +1590,12 @@ export default function Blogs() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="flex items-center justify-center gap-3 py-4"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#00ffcc]/10 border border-[#00ffcc]/40 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-[#FFD600]/10 border border-[#FFD600]/40 flex items-center justify-center">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M3 8l3.5 3.5L13 5" stroke="#00ffcc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M3 8l3.5 3.5L13 5" stroke="#FFD600" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <span className="text-[#00ffcc] font-semibold">You're on the flight manifest.</span>
+                  <span className="text-[#FFD600] font-semibold">You're on the flight manifest.</span>
                 </motion.div>
               ) : (
                 <motion.div key="form" className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -1603,13 +1604,13 @@ export default function Blogs() {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="flex-1 px-5 py-3.5 bg-white/5 border border-white/15 rounded-full text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#00ffcc]/50 transition-colors"
+                    className="flex-1 px-5 py-3.5 bg-white border border-gray-200 rounded-full text-gray-900 text-sm placeholder-gray-500 focus:outline-none focus:border-[#FFD600]/50 transition-colors"
                   />
                   <motion.button
-                    whileHover={{ scale: 1.04, boxShadow: '0 0 24px rgba(0,255,204,0.25)' }}
+                    whileHover={{ scale: 1.04, boxShadow: '0 0 24px rgba(255,214,0,0.25)' }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => email.includes('@') && setSubscribed(true)}
-                    className="px-7 py-3.5 bg-[#00ffcc] text-black font-bold rounded-full text-sm tracking-wide whitespace-nowrap"
+                    className="px-7 py-3.5 bg-[#FFD600] text-black font-bold rounded-full text-sm tracking-wide whitespace-nowrap"
                   >
                     Subscribe
                   </motion.button>
@@ -1618,6 +1619,7 @@ export default function Blogs() {
             </AnimatePresence>
 
             <p className="text-gray-600 text-xs mt-4">No spam. Unsubscribe anytime. We fly clean.</p>
+            </div>
           </motion.div>
         </div>
       </section>

@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CartContext } from '../context/CartContext';
 
 const NAV_LINKS = [
-  { label: 'Home',     href: '#/'       },
-  { label: 'About',    href: '#about'   },
-  { label: 'Services', href: '#missions'},
-  { label: 'Blogs',    href: '#blogs'   },
-  { label: 'Contact',  href: '#contact' },
+  { label: 'Home', href: '#/' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#missions' },
+  { label: 'Blogs', href: '#blogs' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const Header: React.FC = () => {
@@ -57,30 +57,35 @@ export const Header: React.FC = () => {
     if (magnetRef.current) magnetRef.current.style.transform = '';
   };
 
+  const isHome = currentHash === '' || currentHash === '#/' || currentHash.startsWith('#home');
+  const isDarkTheme = currentHash.startsWith('#blogs');
+  const useWhiteText = isDarkTheme || (isHome && !scrolled);
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? 'py-3 bg-[#03070c]/90 backdrop-blur-xl border-b border-[#00ffcc]/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
-          : 'py-4 bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b-2 ${isHome && !scrolled
+        ? 'bg-transparent border-transparent shadow-none'
+        : isDarkTheme
+          ? 'bg-[#0D0D0D] border-yellow shadow-[0_2px_15px_rgba(0,0,0,0.35)]'
+          : 'bg-white/95 backdrop-blur-md border-yellow shadow-[0_2px_15px_rgba(0,0,0,0.05)]'
+        } ${scrolled ? 'py-3' : 'py-4'}`}
     >
-      <nav className="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8">
+      <nav className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <motion.a
           href="#/"
           onClick={handleNavigate}
           data-nav-logo
-          className="text-2xl font-black tracking-tighter text-white relative group"
+          className={`text-2xl font-condensed font-extrabold tracking-tight relative group ${useWhiteText ? 'text-white' : 'text-black'
+            }`}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
           transition={{ duration: 0.2 }}
         >
-          SKY<span className="text-[#00ffcc]">VISION</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#00ffcc] to-[#3b82f6] group-hover:w-full transition-all duration-500 ease-out" />
+          SKY<span className="text-yellow">VISION</span>
         </motion.a>
 
         {/* Desktop nav */}
@@ -95,15 +100,17 @@ export const Header: React.FC = () => {
               <a
                 href={link.href}
                 onClick={handleNavigate}
-                className={`relative text-sm font-medium tracking-wide transition-colors duration-300 group ${
-                  isActive(link.href) ? 'text-[#00ffcc]' : 'text-gray-400 hover:text-white'
-                }`}
+                className={`relative text-xs font-bold uppercase tracking-widest transition-colors duration-300 group ${isActive(link.href)
+                  ? 'text-yellow'
+                  : useWhiteText
+                    ? 'text-white hover:text-yellow'
+                    : 'text-black hover:text-yellow'
+                  }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[1.5px] bg-[#00ffcc] transition-all duration-400 ease-out ${
-                    isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-yellow transition-all duration-400 ease-out ${isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
                 />
               </a>
             </motion.li>
@@ -116,7 +123,8 @@ export const Header: React.FC = () => {
           <motion.a
             href="#cart"
             onClick={handleNavigate}
-            className="relative text-gray-400 hover:text-[#00ffcc] transition-colors group"
+            className={`relative transition-colors group ${useWhiteText ? 'text-white hover:text-yellow' : 'text-black hover:text-yellow'
+              }`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -127,7 +135,7 @@ export const Header: React.FC = () => {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
-                  className="absolute -top-1.5 -right-2 bg-[#00ffcc] text-black text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center shadow-[0_0_10px_#00ffcc]"
+                  className="absolute -top-1.5 -right-2 bg-yellow text-black text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-[0_2px_8px_rgba(255,214,0,0.4)]"
                 >
                   {itemCount}
                 </motion.span>
@@ -142,18 +150,20 @@ export const Header: React.FC = () => {
             onClick={handleNavigate}
             onMouseMove={handleMagnet}
             onMouseLeave={resetMagnet}
-            className="hidden sm:flex items-center px-5 py-2 bg-[#00ffcc]/10 border border-[#00ffcc]/60 text-[#00ffcc] rounded-full text-sm font-bold transition-all duration-300 hover:bg-[#00ffcc] hover:text-black hover:shadow-[0_0_24px_rgba(0,255,204,0.4)] hover:border-transparent"
+            className="hidden sm:flex items-center gap-1.5 px-6 py-2.5 bg-yellow text-black text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:bg-yellow-hover"
+            style={{ clipPath: 'polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%)' }}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7, duration: 0.5 }}
           >
-            <ion-icon name="rocket-outline" class="mr-1.5 text-sm"></ion-icon>
+            <ion-icon name="rocket-outline" class="text-sm"></ion-icon>
             Get Quote
           </motion.a>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-gray-400 hover:text-white transition-colors"
+            className={`md:hidden transition-colors bg-transparent border-none ${useWhiteText ? 'text-white hover:text-yellow' : 'text-black hover:text-yellow'
+              }`}
             onClick={() => setMobileOpen(v => !v)}
           >
             <ion-icon name={mobileOpen ? 'close' : 'menu'} class="text-2xl"></ion-icon>
@@ -168,8 +178,9 @@ export const Header: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="md:hidden overflow-hidden bg-[#03070c]/95 backdrop-blur-xl border-t border-white/5"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className={`md:hidden overflow-hidden ${useWhiteText ? 'bg-[#0D0D0D] border-t border-gray-dark' : 'bg-white border-t border-gray-border'
+              }`}
           >
             <ul className="flex flex-col px-6 py-6 space-y-4">
               {NAV_LINKS.map((link, i) => (
@@ -177,19 +188,37 @@ export const Header: React.FC = () => {
                   key={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.35 }}
+                  transition={{ delay: i * 0.05, duration: 0.3 }}
                 >
                   <a
                     href={link.href}
                     onClick={handleNavigate}
-                    className={`text-lg font-semibold tracking-wide transition-colors ${
-                      isActive(link.href) ? 'text-[#00ffcc]' : 'text-gray-300 hover:text-white'
-                    }`}
+                    className={`text-sm font-bold uppercase tracking-wider transition-colors block py-2 ${isActive(link.href)
+                      ? 'text-yellow'
+                      : useWhiteText
+                        ? 'text-white hover:text-yellow'
+                        : 'text-black hover:text-yellow'
+                      }`}
                   >
                     {link.label}
                   </a>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: NAV_LINKS.length * 0.05, duration: 0.3 }}
+                className={`pt-4 border-t ${useWhiteText ? 'border-gray-dark' : 'border-gray-border'}`}
+              >
+                <a
+                  href="#contact"
+                  onClick={handleNavigate}
+                  className="w-full text-center block px-6 py-3 bg-yellow text-black text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:bg-yellow-hover"
+                  style={{ clipPath: 'polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%)' }}
+                >
+                  Get Quote
+                </a>
+              </motion.li>
             </ul>
           </motion.div>
         )}
