@@ -7,7 +7,7 @@ import type { Variants, Transition } from 'framer-motion';
 // Framer Motion v12 requires ease bezier as a 4-tuple, not number[].
 type BezierTuple = [number, number, number, number];
 
-const smooth: BezierTuple = [0.25, 0.46, 0.45, 0.94];
+const smooth: BezierTuple = [0.22, 1, 0.36, 1]; // Premium apple-style spring
 const snappy: BezierTuple = [0.76, 0, 0.24, 1];
 
 // Shared transition builders
@@ -37,7 +37,7 @@ export const sectionContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.13,
+      staggerChildren: 0.15,
       delayChildren: 0.05,
     },
   },
@@ -67,13 +67,14 @@ export const headingReveal: Variants = {
 
 // ── Card reveal (scroll-based) ─────────────────────────────
 export const cardReveal: Variants = {
-  hidden: { opacity: 0, y: 48, scale: 0.95, filter: 'blur(4px)' },
+  hidden: { opacity: 0, y: 30, scale: 0.98, filter: 'blur(4px)', boxShadow: '0 4px 10px rgba(0,0,0,0)' },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     filter: 'blur(0px)',
-    transition: smoothT(0.75),
+    boxShadow: '0 4px 16px rgba(15,23,42,0.06)',
+    transition: smoothT(0.85),
   },
 };
 
@@ -115,5 +116,5 @@ export const slideInRight: Variants = {
 export const inViewProps = {
   initial: 'hidden',
   whileInView: 'visible',
-  viewport: { once: true, margin: '-80px' },
+  viewport: { once: false, margin: '-80px' },
 } as const;

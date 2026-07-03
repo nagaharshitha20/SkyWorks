@@ -34,11 +34,11 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-white border-t-[3px] border-yellow text-black">
       {/* Main footer grid */}
-      <div className="max-w-7xl mx-auto pt-14 pb-10 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto pt-16 pb-12 px-6 sm:px-8 lg:px-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-10 lg:gap-12">
 
           {/* Brand column */}
-          <div className="col-span-2 sm:col-span-3 md:col-span-1 flex flex-col items-start gap-4">
+          <div className="col-span-2 sm:col-span-4 md:col-span-1 flex flex-col items-start gap-4 mb-4 md:mb-0">
             <h3 className="text-2xl font-condensed font-extrabold tracking-tight text-black">
               SKY<span className="text-yellow">VISION</span>
             </h3>
@@ -99,10 +99,10 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-200 py-5 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-gray-mid text-xs">
-          <p>© {new Date().getFullYear()} Skyvision Industries. All rights reserved.</p>
-          <p className="text-[11px] tracking-wide uppercase font-bold text-gray-mid">
+      <div className="border-t border-gray-200 py-6 px-6 sm:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-mid text-xs">
+          <p className="text-center sm:text-left">© {new Date().getFullYear()} Skyvision Industries. All rights reserved.</p>
+          <p className="text-[11px] tracking-wide uppercase font-bold text-gray-mid text-center sm:text-right">
             Made with ♥ in India
           </p>
         </div>

@@ -4,6 +4,7 @@ import {
   sectionContainer, fadeUp, headingReveal, cardReveal,
   imageReveal, slideInLeft, slideInRight, inViewProps,
 } from '../components/ui/motion';
+import PartnerSection from '../components/PartnerSection';
 
 const About: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -276,6 +277,9 @@ const About: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* NEW PARTNER SECTION */}
+      <PartnerSection />
 
       {/* 4. TRUSTED BY (LIGHT SECTION) */}
       <section className="py-32 px-4 sm:px-6 relative z-10 bg-gray-light text-gray-mid flex justify-center text-center reveal border-t border-gray-border">

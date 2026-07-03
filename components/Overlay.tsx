@@ -1,5 +1,10 @@
 import React, { forwardRef, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import ServicesSection from './ServicesSection';
+import IndustrialSection from './IndustrialSection';
+import StatsSection from './StatsSection';
+import WhyPartnerSection from './WhyPartnerSection';
+import ApplicationsSection from './ApplicationsSection';
+import { motion, Variants } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -105,14 +110,14 @@ function CinematicHero({ introFinished }: { introFinished: boolean }) {
   }, []);
 
   // ── INITIAL CONTENT MOUNT ANIMATION ──────────────────────────
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: { staggerChildren: 0.14, delayChildren: introFinished ? 0.2 : 0.6 },
     },
   };
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 22 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] } },
   };
@@ -363,33 +368,7 @@ export const Overlay = forwardRef<HTMLDivElement, { introFinished?: boolean }>((
 
       {/* ─── 2. STATS BAR ─── */}
 
-      <section className="w-full bg-white border-t-[3px] border-yellow py-14">
-        <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          variants={sectionContainer}
-          {...inViewProps}
-        >
-          {[
-            { val: '50', suffix: '+', label: 'Projects Completed' },
-            { val: '500', suffix: '+', label: 'Flight Hours' },
-            { val: '10', suffix: '+', label: 'Clients Served' },
-            { val: '99', suffix: '%', label: 'Reliability' },
-          ].map((stat, i) => (
-            <motion.div
-              key={i}
-              variants={cardReveal}
-              className="card-light py-10 px-6 text-center flex flex-col items-center justify-center cursor-pointer group"
-            >
-              <span className="text-4xl md:text-5xl font-condensed font-extrabold text-black group-hover:text-yellow transition-colors duration-300">
-                {stat.val}<span className="text-yellow">{stat.suffix}</span>
-              </span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-gray-mid mt-2">
-                {stat.label}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
+      <StatsSection />
 
       {/* ─── 3. INNOVATIONS SHOWCASE ─── */}
       <motion.section
@@ -450,81 +429,11 @@ export const Overlay = forwardRef<HTMLDivElement, { introFinished?: boolean }>((
         </div>
       </motion.section>
 
-      {/* ─── 5. PRODUCTS ─── */}
-      <motion.section
-        id="products"
-        className="py-20 sm:py-24 bg-white"
-        variants={sectionContainer}
-        {...inViewProps}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 flex flex-col items-center">
-            <motion.span variants={fadeUp} className="section-eyebrow">— Our Fleet</motion.span>
-            <motion.h2 variants={headingReveal} className="text-[26px] sm:text-[34px] md:text-[46px] font-condensed font-extrabold text-black">
-              Drone Solutions
-            </motion.h2>
-            <motion.div variants={fadeUp} className="underline-accent mx-auto" />
-            <motion.p variants={fadeUp} className="text-gray-mid text-base sm:text-lg font-normal max-w-2xl mx-auto">
-              Mastering the skies with platforms designed for high performance, uncompromising reliability, and true scalability.
-            </motion.p>
-          </div>
+      {/* ─── 5. SERVICES — Premium Parallelogram Cards ─── */}
+      <ServicesSection />
 
-          <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8" variants={sectionContainer}>
-            {[
-              { id: 'x1', name: 'SkyVision X1', type: 'Delivery', desc: 'High payload autonomous logistics. Engineered to carry more, further.', img: 'https://images.unsplash.com/photo-1521405924368-64c5b84bec60?q=80&w=600&auto=format&fit=crop' },
-              { id: 's1', name: 'SkyVision S1', type: 'Surveillance', desc: 'Long-endurance situational awareness. Thermal imaging standard.', img: 'https://images.unsplash.com/photo-1508614589041-895b68904561?q=80&w=600&auto=format&fit=crop' },
-              { id: 'a1', name: 'SkyVision A1', type: 'Agriculture', desc: 'Precision crop monitoring & spraying. Save resources, boost yield.', img: 'https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=600&auto=format&fit=crop' },
-            ].map((p, i) => (
-              <motion.div key={i} variants={cardReveal} className="card-light flex flex-col h-full group">
-                <div className="h-48 overflow-hidden relative mb-6 rounded">
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="flex-grow flex flex-col">
-                  <span className="text-[10px] font-bold text-yellow tracking-widest uppercase mb-2 block">{p.type}</span>
-                  <h3 className="text-xl font-condensed font-extrabold text-black mb-3">{p.name}</h3>
-                  <p className="text-gray-mid text-sm mb-6 flex-grow leading-relaxed">{p.desc}</p>
-                  <a href={`#shop/${p.id}`} onClick={handleNavigate} className="btn-primary w-full text-center cursor-pointer">
-                    Explore Specs
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* ─── 6. USE CASES (LIGHT) ─── */}
-      <motion.section
-        id="solutions"
-        className="py-20 sm:py-24 bg-[#F7F7F7]"
-        variants={sectionContainer}
-        {...inViewProps}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.span variants={fadeUp} className="section-eyebrow">— Versatility</motion.span>
-          <motion.h2 variants={headingReveal} className="text-[26px] sm:text-[34px] md:text-[46px] font-condensed font-extrabold text-black">
-            Industrial Applications
-          </motion.h2>
-          <motion.div variants={fadeUp} className="underline-accent" />
-
-          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6" variants={sectionContainer}>
-            {[
-              { icon: 'cube-outline', title: 'Logistics', desc: 'Fast last-mile autonomous drops.' },
-              { icon: 'leaf-outline', title: 'Agriculture', desc: 'Precision spraying & monitoring.' },
-              { icon: 'eye-outline', title: 'Surveillance', desc: 'Border and perimeter security.' },
-              { icon: 'map-outline', title: 'Surveying', desc: 'High-accuracy topographic maps.' },
-            ].map((uc, i) => (
-              <motion.div key={i} variants={cardReveal} className="card-light flex flex-col items-start group">
-                <div className="card-icon mb-5">
-                  <ion-icon name={uc.icon} className="text-xl"></ion-icon>
-                </div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-black mb-2">{uc.title}</h3>
-                <p className="text-gray-mid text-sm leading-relaxed">{uc.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
+      {/* ─── 6. INDUSTRIAL APPLICATIONS — Poster Roll Reveal ─── */}
+      <IndustrialSection />
 
       {/* ─── 7. PORTFOLIO ─── */}
       <motion.section
@@ -582,38 +491,10 @@ export const Overlay = forwardRef<HTMLDivElement, { introFinished?: boolean }>((
       </motion.section>
 
       {/* ─── 8. WHY SKYVISION (LIGHT) ─── */}
-      <motion.section
-        className="py-20 sm:py-24 bg-[#F7F7F7] relative overflow-hidden"
-        variants={sectionContainer}
-        {...inViewProps}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.span variants={fadeUp} className="section-eyebrow">— The Advantage</motion.span>
-          <motion.h2 variants={headingReveal} className="text-[26px] sm:text-[34px] md:text-[46px] font-condensed font-extrabold text-black">
-            Why Partner with SkyVision
-          </motion.h2>
-          <motion.div variants={fadeUp} className="underline-accent" />
+      <WhyPartnerSection />
 
-          <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 mt-6" variants={sectionContainer}>
-            {[
-              { icon: 'color-wand-outline', title: 'Tailor-Made Configurations', desc: 'No generic templates. Every hull, sensor, and battery configuration is mapped to your distinct ROI requirements.' },
-              { icon: 'battery-charging-outline', title: 'Unmatched Endurance', desc: 'Featuring solid-state batteries and ultra-lightweight composite frames for 45% longer flight times than market standards.' },
-              { icon: 'shield-checkmark-outline', title: 'Enterprise Reliability', desc: 'Redundant flight controllers and encrypted comm-links guarantee your fleet stays airborne and secure.' },
-              { icon: 'rocket-outline', title: 'Locally Sourced & Supported', desc: 'Proudly engineered and assembled in India, guaranteeing rapid part replacements and localized customer support.' },
-            ].map((ft, i) => (
-              <motion.div key={i} variants={cardReveal} className="card-light flex items-start space-x-4 sm:space-x-5 group">
-                <div className="card-icon flex-shrink-0">
-                  <ion-icon name={ft.icon} className="text-xl"></ion-icon>
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-black uppercase tracking-wider mb-2">{ft.title}</h3>
-                  <p className="text-gray-mid text-sm leading-relaxed">{ft.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
+      {/* ─── NEW: APPLICATIONS (FLIP CARDS) ─── */}
+      <ApplicationsSection />
 
       {/* ─── 9. TESTIMONIAL ─── */}
       <motion.section
